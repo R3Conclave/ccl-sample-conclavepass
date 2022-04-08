@@ -36,7 +36,7 @@ class FunctionsBackend {
 
     fun getPasswords(): List<PasswordEntry> {
         val entries = mutableListOf<PasswordEntry>()
-        val result = conclave.functions.call("query", queryHash, prepareArg(mapper.valueToTree("")))
+        val result = conclave.functions.call("query", queryHash, prepareArg(""))
         // We will have got a JSON string back containing an object named 'return' that contains
         // the result, which is an array of entries.
         val json = mapper.readTree(result)
@@ -49,7 +49,7 @@ class FunctionsBackend {
     }
 
     fun getPassword(url: String): PasswordEntry {
-        val result = conclave.functions.call("get", getHash, prepareArg(mapper.valueToTree(url)))
+        val result = conclave.functions.call("get", getHash, prepareArg(url))
         // We will have got a JSON string back containing an object named 'return' that contains
         // the result. In this case it should be a password entry.
         val json = mapper.readTree(result)
@@ -57,7 +57,7 @@ class FunctionsBackend {
     }
 
     fun removePassword(url: String): String {
-        val result = conclave.functions.call("remove", removeHash, prepareArg(mapper.valueToTree(url)))
+        val result = conclave.functions.call("remove", removeHash, prepareArg(url))
         // We will have got a JSON string back containing an object named 'return' that contains
         // the result. In this case it should be a password entry.
         // We will have got a JSON string back containing an object named 'return' that contains
@@ -68,20 +68,17 @@ class FunctionsBackend {
 
     fun addPassword(entry: PasswordEntry): String {
         // Create the new password entry.
-        val result = conclave.functions.call("addEntry", addEntryHash, prepareArg(mapper.valueToTree<JsonNode>(entry)))
+        val result = conclave.functions.call("addEntry", addEntryHash, prepareArg(entry))
         // We will have got a JSON string back containing an object named 'return' that contains
         // the result. In this case it should just be 'ok'
         val json = mapper.readTree(result)
         return json["return"].asText()
     }
 
-    private fun prepareArg(arg: JsonNode): ArrayNode {
+    private fun prepareArg(arg: Any): List<Any> {
         val userinfo = ConclavePass.auth.getUserInfo()
         // All our functions start with `token, password`. Just add the final parameter.
-        return jacksonObjectMapper().createArrayNode()
-            .add(getUsernameHash())
-            .add(userinfo.password)
-            .add(arg)
+        return listOf(getUsernameHash(), userinfo.password, arg)
     }
 
     private fun getUsernameHash(): String {
