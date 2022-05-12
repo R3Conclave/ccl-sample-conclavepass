@@ -17,7 +17,7 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
-	maven(url = "path/to/conclave-cloud-sdk/repo")
+	maven(url = "../lib/conclave-cloud-sdk-java-1.0.0-beta1/repo")
 	mavenCentral()
 }
 
@@ -31,7 +31,7 @@ dependencies {
 	implementation("info.picocli:picocli:4.6.1")
 
 	// Conclave Cloud
-	implementation("com.r3.conclave.cloud:conclave-cloud-sdk:1.0-RC1")
+	implementation("com.r3.conclave.cloud:conclave-cloud-sdk:1.0.0-beta1")
 }
 
 tasks.withType<KotlinCompile> {

@@ -16,7 +16,7 @@ public repository. You need to download the package containing the SDK, unzip it
 then update `package.json` in this project to point to it.
 
 ```json
-    "conclave-cloud-sdk": "file:../../../conclave-cloud-sdk-js",
+    "conclave-cloud-sdk": "file:../lib/conclave-cloud-sdk-js-1.0.0-beta1",
 ```
 
 Once configured, the project can be built and started using a local webserver using:
