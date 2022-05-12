@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private _email: string = "a_user@conclave.cloud"
-  private _password: string = "12345678"
+  private _email: string = ""
+  private _password: string = ""
 
   constructor() { }
 

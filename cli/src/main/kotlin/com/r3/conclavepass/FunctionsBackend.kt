@@ -10,8 +10,8 @@ import com.r3.conclavecloud.client.ConclaveClientConfig
 // Ensure these ID's match the values in your project.
 //  ccl platform tenant
 //  ccl projects list
-val tenantID = "T9F6C95992408D56F3648433DCFCA44496B5891CBFCBDD7E3619645211A94FE7"
-val projectID = "688f06bba40ee31317156f6f35ed27a9071365d0ed6578bf6cd0192024687f29"
+val tenantID = "[TODO: Replace with your Tenant ID]"
+val projectID = "[TODO: Replace with your Project ID]"
 
 // Ensure these hashes match the actual hashes of the uploaded code
 //  ccl functions list
@@ -32,7 +32,7 @@ class FunctionsBackend {
     private val mapper = jacksonObjectMapper()
 
     // Create the Conclave SDK instance
-    val conclave = Conclave.create(ConclaveClientConfig(tenantID, projectID, Conclave.DEVELOPMENT_API_URL))
+    val conclave = Conclave.create(ConclaveClientConfig(tenantID, projectID, Conclave.PRODUCTION_API_URL))
 
     fun getPasswords(): List<PasswordEntry> {
         val entries = mutableListOf<PasswordEntry>()

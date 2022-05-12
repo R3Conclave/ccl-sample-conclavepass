@@ -22,7 +22,7 @@ where you unzipped the SDK.
 
 ```kotlin
 repositories {
-	maven(url = "/home/rhopkins/src/ConclaveCloud/conclave-cloud-sdk-java/conclave-cloud-sdk/build/repo") // Change this path
+	maven(url = "../lib/conclave-cloud-sdk-java-1.0.0-beta1/repo") // Change this path
 	mavenCentral()
 }
 ```
