@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { Conclave } from 'conclave-cloud-sdk';
 import { AuthService } from './auth.service';
 
-const tenantID = "[TODO: Replace with your Tenant ID]";
-const projectID = "[TODO: Replace with your Project ID]";
+const apiKey = "[TODO: Replace with an API key generated for your project]";
 const queryHash = "AD7635832EDC36AF1ED9C38E0FD57F5E056AD0215F86A7E5BACCB330A32D8E40";
 const addEntryHash = "DD442ADA05F2469E3AA6F10A33A3914FF13C7318AFC9713D5BDCA8C3AD8C26DF";
 const getHash = "3CFC30B748EF865D518C4C03109375AB91EC355F53ED5166C09197BF7540D9BD";
@@ -27,8 +26,8 @@ export class CclService {
     private auth: AuthService
   ) { 
     this.conclave = Conclave.create({
-      tenantID: tenantID,
-      projectID: projectID
+      apiKey: apiKey,
+      apiURL: Conclave.PRODUCTION_API_URL
     });
 
   }
