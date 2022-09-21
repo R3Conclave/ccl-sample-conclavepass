@@ -186,7 +186,7 @@ you will need to download and unzip it locally and update the CLI project
 to use your local copy.
 
 Instructions on how to do this and build and run the CLI can be found in
-[frontend/README.md](frontend/README.md).
+[cli/README.md](cli/README.md).
 
 ## Usage notes
 This is only a demo of a password manager. As such, it provides only very basic
